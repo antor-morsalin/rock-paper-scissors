@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Rock Paper Scissors</h1>
+
+        <div class="button-container">
+            <button class="rock-button p-button" onclick="play('rock');">
+                <img src="icons/rock-emoji.png" class="emojis">
+            </button>
+
+            <button class="paper-button p-button" onclick="play('paper');">
+                <img src="icons/paper-emoji.png" class="emojis">
+            </button>
+
+            <button class="scissor-button p-button" onclick="play('scissor');">
+                <img src="icons/scissors-emoji.png" class="emojis">
+            </button>
+        </div>
+
+        <div class="info-container">
+            <p class="verdict"></p>
+
+            <p class="choice">
+                <span class="user-choice">
+                    
+                </span>
+
+                <span class="pc-choice">
+
+                </span>
+            </p>
+
+            <p class="score"></p>
+        </div>
+
+        <button class="reset" onclick="reset();">Reset</button>
+
+    </div>
+
+</body>
+
+<script src="main.js"></script>
+
+</html>
