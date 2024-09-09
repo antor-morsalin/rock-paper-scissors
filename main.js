@@ -11,6 +11,28 @@ document.querySelector('.score').innerHTML = `
     Wins : ${score.win} , Ties : ${score.tie} , Losses : ${score.loss}
 `;
 
+let isAuto = false ;
+let intervalId;
+
+function autoPlay()
+{
+    if(!isAuto)
+    {
+        intervalId = setInterval(function (){
+            let userChoice = getPcChoice();
+            play(userChoice);
+        }, 1200);
+        isAuto = true;
+        document.querySelector('.auto-game').innerHTML = `Manual Mode`;
+    }
+    else 
+    {
+        clearInterval(intervalId);
+        isAuto = false;
+        document.querySelector('.auto-game').innerHTML = `Auto Mode`;
+    }
+}
+
 function play(userChoice) {
     let pcCHoice = getPcChoice();
     let verdict = getVerdict(userChoice, pcCHoice);
@@ -85,6 +107,23 @@ function reset() {
         loss: 0
     }
     localStorage.setItem('score', JSON.stringify(score));
+
+    document.querySelector('.info-container').innerHTML = `
+        <p class="verdict"></p>
+
+            <p class="choice">
+                <span class="user-choice">
+                    
+                </span>
+
+                <span class="pc-choice">
+
+                </span>
+            </p>
+
+        <p class="score"></p>
+    `;
+
     document.querySelector('.score').innerHTML = `
     Wins : ${score.win} , Ties : ${score.tie} , Losses : ${score.loss}
     `;
