@@ -37,6 +37,22 @@ function play(userChoice) {
     let pcCHoice = getPcChoice();
     let verdict = getVerdict(userChoice, pcCHoice);
 
+    document.querySelector('.info-container').innerHTML = `
+            <p class="verdict"></p>
+           
+            <p class="choice">
+                <span class="user-choice">
+                    
+                </span>
+
+                <span class="pc-choice">
+
+                </span>
+            </p>
+
+            <p class="score"></p>
+    `;
+
     document.querySelector('.score').innerHTML = `
     Wins : ${score.win} , Ties : ${score.tie} , Losses : ${score.loss}
     `;
@@ -46,6 +62,25 @@ function play(userChoice) {
     document.querySelector('.verdict').innerHTML = `${verdict}`;
 
     localStorage.setItem('score', JSON.stringify(score));
+
+    if(verdict == 'You Win')
+    {
+        document.querySelector('.verdict').classList.remove('lose');
+        document.querySelector('.verdict').classList.remove('tie');
+        document.querySelector('.verdict').classList.add('win');
+    }
+    else if(verdict == 'Tie')
+    {
+        document.querySelector('.verdict').classList.remove('lose');
+        document.querySelector('.verdict').classList.remove('win');
+        document.querySelector('.verdict').classList.add('tie');
+    }
+    else 
+    {
+        document.querySelector('.verdict').classList.remove('tie');
+        document.querySelector('.verdict').classList.remove('win');
+        document.querySelector('.verdict').classList.add('lose');
+    }
 }
 
 function getPcChoice() {
@@ -109,24 +144,17 @@ function reset() {
     localStorage.setItem('score', JSON.stringify(score));
 
     document.querySelector('.info-container').innerHTML = `
-        <p class="verdict"></p>
-
-            <p class="choice">
-                <span class="user-choice">
-                    
-                </span>
-
-                <span class="pc-choice">
-
-                </span>
-            </p>
-
-        <p class="score"></p>
+            
+            <p class="score"></p>
     `;
 
     document.querySelector('.score').innerHTML = `
     Wins : ${score.win} , Ties : ${score.tie} , Losses : ${score.loss}
     `;
+
+    document.querySelector('.verdict').classList.remove('tie');
+    document.querySelector('.verdict').classList.remove('win');
+    document.querySelector('.verdict').classList.remove('lose');
 }
 
 function setChoice(userChoice, pcCHoice) {
