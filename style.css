@@ -62,7 +62,11 @@ h1 {
 }
 
 .info-container{
+    display: flex;
     text-align: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
 }
 
 
@@ -80,9 +84,9 @@ span {
 
 .score {
     background-color: #ffd1d1;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 30px 10px 30px;
     border-radius: 10px;
-    min-width: 240px;
+    margin-bottom: 30px;
 }
 
 .choice-icon {
@@ -119,3 +123,31 @@ span {
 .auto-game:active{
     opacity: 0.5;
 }
+
+.win{
+    background-color: rgb(194, 255, 194);
+    padding: 10px 30px 10px 30px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+    width: 100px;
+}
+
+.lose {
+    background-color: rgb(255, 118, 118);
+    padding: 10px 30px 10px 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    width: 100px;
+}
+
+.tie {
+    background-color: rgb(255, 255, 162);
+    padding: 10px 30px 10px 30px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+    width: 100px;
+}  
+
