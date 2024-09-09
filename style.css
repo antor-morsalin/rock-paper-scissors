@@ -39,7 +39,8 @@ h1 {
     width: 50px;
 }
 
-.reset {
+.reset,
+.auto-game {
     height: 35px;
     width: 100px;
     border-radius: 10px;
@@ -102,4 +103,19 @@ span {
     display: flex;
     min-width: 300px;
     justify-content: center;
+}
+
+.op-buttons {
+    display: flex;
+    width: 240px;
+    justify-content: space-evenly;
+}
+
+.auto-game:hover{
+    background-color: #fff8fe;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.auto-game:active{
+    opacity: 0.5;
 }
