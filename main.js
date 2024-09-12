@@ -16,14 +16,27 @@ document.querySelector('.scissor-button')
 
 
 document.querySelector('.reset')
-    .addEventListener('click', ()=>{
+    .addEventListener('click', () => {
         reset();
     });
 
 document.querySelector('.auto-game')
-    .addEventListener('click', ()=>{
+    .addEventListener('click', () => {
         autoPlay();
     });
+
+
+document.body.addEventListener('keydown', (event) => {
+    if (event.key == 'r' || event.key == 'R') {
+        play('rock');
+    }
+    else if (event.key == 'p' || event.key == 'P') {
+        play('paper');
+    }
+    else if (event.key == 's' || event.key == 'S') {
+        play('scissor');
+    }
+});
 
 
 let score = JSON.parse(localStorage.getItem('score')) ||
