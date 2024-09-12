@@ -1,3 +1,31 @@
+document.querySelector('.rock-button')
+    .addEventListener('click', () => {
+        play('rock');
+    });
+
+document.querySelector('.paper-button')
+    .addEventListener('click', () => {
+        play('paper');
+    });
+
+
+document.querySelector('.scissor-button')
+    .addEventListener('click', () => {
+        play('scissor');
+    });
+
+
+document.querySelector('.reset')
+    .addEventListener('click', ()=>{
+        reset();
+    });
+
+document.querySelector('.auto-game')
+    .addEventListener('click', ()=>{
+        autoPlay();
+    });
+
+
 let score = JSON.parse(localStorage.getItem('score')) ||
 {
     win: 0,
@@ -11,22 +39,19 @@ document.querySelector('.score').innerHTML = `
     Wins : ${score.win} , Ties : ${score.tie} , Losses : ${score.loss}
 `;
 
-let isAuto = false ;
+let isAuto = false;
 let intervalId;
 
-function autoPlay()
-{
-    if(!isAuto)
-    {
-        intervalId = setInterval(function (){
+function autoPlay() {
+    if (!isAuto) {
+        intervalId = setInterval(function () {
             let userChoice = getPcChoice();
             play(userChoice);
         }, 1200);
         isAuto = true;
         document.querySelector('.auto-game').innerHTML = `Manual Mode`;
     }
-    else 
-    {
+    else {
         clearInterval(intervalId);
         isAuto = false;
         document.querySelector('.auto-game').innerHTML = `Auto Mode`;
@@ -63,20 +88,17 @@ function play(userChoice) {
 
     localStorage.setItem('score', JSON.stringify(score));
 
-    if(verdict == 'You Win')
-    {
+    if (verdict == 'You Win') {
         document.querySelector('.verdict').classList.remove('lose');
         document.querySelector('.verdict').classList.remove('tie');
         document.querySelector('.verdict').classList.add('win');
     }
-    else if(verdict == 'Tie')
-    {
+    else if (verdict == 'Tie') {
         document.querySelector('.verdict').classList.remove('lose');
         document.querySelector('.verdict').classList.remove('win');
         document.querySelector('.verdict').classList.add('tie');
     }
-    else 
-    {
+    else {
         document.querySelector('.verdict').classList.remove('tie');
         document.querySelector('.verdict').classList.remove('win');
         document.querySelector('.verdict').classList.add('lose');
@@ -163,36 +185,31 @@ function setChoice(userChoice, pcCHoice) {
             `You <img src="icons/rock-emoji.png" class="choice-icon">
             `;
     }
-    else if(userChoice=='paper')
-    {
+    else if (userChoice == 'paper') {
         document.querySelector('.user-choice').innerHTML =
-        `You 
+            `You 
         <span>
             <img src="icons/paper-emoji.png" class="choice-icon">
-        </span>`;   
+        </span>`;
     }
-    else 
-    {
+    else {
         document.querySelector('.user-choice').innerHTML =
-        `You 
+            `You 
         <span>
             <img src="icons/scissors-emoji.png" class="choice-icon">
-        </span>`;    
+        </span>`;
     }
 
-    if(pcCHoice=='rock')
-    {
+    if (pcCHoice == 'rock') {
         document.querySelector('.pc-choice').innerHTML =
             `<img src="icons/rock-emoji.png" alt="" class="choice-icon"> PC`;
     }
-    else if(pcCHoice=='paper')
-    {
+    else if (pcCHoice == 'paper') {
         document.querySelector('.pc-choice').innerHTML =
             `<img src="icons/paper-emoji.png" alt="" class="choice-icon"> PC`;
     }
-    else 
-    {
+    else {
         document.querySelector('.pc-choice').innerHTML =
-            `<img src="icons/scissors-emoji.png" alt="" class="choice-icon"> PC`;   
+            `<img src="icons/scissors-emoji.png" alt="" class="choice-icon"> PC`;
     }
 }
